@@ -37,6 +37,9 @@ watchlistApp.controller('WatchlistCtrl', ['$scope', 'SharedResource',
         //find scoped item and update....
         $scope.item.last_price = data.last_price;
         $scope.item.change = data.change;
+        $scope.item.high = data.high;
+        $scope.item.low = data.low;
+        $scope.item.open = data.open;
         $scope.item.updated_at = data.updated_at;
         console.log("Updated item " + JSON.stringify($scope.item));
         $scope.$apply();

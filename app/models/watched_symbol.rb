@@ -16,18 +16,16 @@ class WatchedSymbol < ActiveRecord::Base
       if (response[:success])
         watched_symbol.last_price = response[:response]["LastPrice"]
         watched_symbol.change = response[:response]["Change"]
+        watched_symbol.high = response[:response]["High"]
+        watched_symbol.low = response[:response]["Low"]
+        watched_symbol.open = response[:response]["Open"]
         watched_symbol.skip_callback = true;
         watched_symbol.save!
+
         # send pusher message...
         event = "#{watched_symbol.user_id}_#{watched_symbol.symbol}"
         puts "sending message w/ subject #{event}"
-        Pusher.trigger('quotes_channel', event, {
-            symbol: watched_symbol.symbol,
-            user_id: watched_symbol.user_id,
-            last_price: watched_symbol.last_price,
-            change: watched_symbol.change,
-            updated_at: watched_symbol.updated_at
-          })
+        Pusher.trigger('quotes_channel', event, watched_symbol.to_json)
       end
     end
   end
@@ -56,6 +54,9 @@ class WatchedSymbol < ActiveRecord::Base
       if (response[:success])
         self.last_price = response[:response]["LastPrice"]
         self.change = response[:response]["Change"]
+        self.high = response[:response]["High"]
+        self.low = response[:response]["Low"]
+        self.open = response[:response]["Open"]
       end
 
       Rails.logger.debug("Watched Symbol #{self.inspect}")

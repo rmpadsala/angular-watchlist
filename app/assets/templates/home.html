@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="col-xs-6">
+<div class="col-xs-9">
   <div class="watch-list-panel panel panel-default" ng-controller="WatchlistCtrl"
     ng-show="visible()">
     <div class="panel-heading">My Watchlist</div>
@@ -28,6 +28,9 @@
             <th>#</th>
             <th>Name</th>
             <th>Last Price</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Open</th>
             <th>Change</th>
             <th>Last Updated</th>
             <th></th>
@@ -37,6 +40,9 @@
               <td> {{ $index + 1 }} </td>
               <td> {{ item.symbol }} </td>
               <td> {{ item.last_price | number:2 }} </td>
+              <td> {{ item.high | number:2 }} </td>
+              <td> {{ item.low | number:2 }} </td>
+              <td> {{ item.open | number:2 }} </td>
               <td> {{ item.change | number:2 }}</td>
               <td> {{ item.updated_at }} </td>
               <td> <a href="#" ng-click="removeWatchedItem($event, $index, item)"
