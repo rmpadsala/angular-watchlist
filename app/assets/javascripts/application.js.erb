@@ -30,12 +30,12 @@ watchlistApp.config(['$httpProvider', '$routeProvider', function($httpProvider, 
   $routeProvider
     .when('/', {
       // Q: Is this the right way to handle multiple views in single template
-      templateUrl: '/assets/home.html',
+      templateUrl: "<%= asset_url('home.html') %>",
       // templateUrl: '/assets/users.html',
       controller: 'UsersCtrl'
     })
     .when('/user/:user_id/watched_symbols', {
-      templateUrl: '/assets/home.html',
+      templateUrl: "<%= asset_url('home.html') %>",
       // templateUrl: '/assets/watch_list.html',
       controller: 'WatchlistCtrl'
     })
