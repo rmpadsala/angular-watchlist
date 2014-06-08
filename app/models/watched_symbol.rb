@@ -58,9 +58,6 @@ class WatchedSymbol < ActiveRecord::Base
         self.low = response[:response]["Low"]
         self.open = response[:response]["Open"]
       end
-
-      Rails.logger.debug("Watched Symbol #{self.inspect}")
-
       response[:success]
     end
 end

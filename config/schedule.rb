@@ -19,6 +19,8 @@
 
 # Learn more: http://github.com/javan/whenever
 
+set :environment, 'development'
+
 set :output, "#{path}/log/chron.log"
 
 every 2.minutes do
