@@ -1,0 +1,33 @@
+<h1>Listing watched_symbols</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Symbol</th>
+      <th>Last price</th>
+      <th>Change</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @watched_symbols.each do |watched_symbol| %>
+      <tr>
+        <td><%= watched_symbol.symbol %></td>
+        <td><%= watched_symbol.last_price %></td>
+        <td><%= watched_symbol.change %></td>
+        <td><%= watched_symbol.user_id %></td>
+        <td><%= link_to 'Show', watched_symbol %></td>
+        <td><%= link_to 'Edit', edit_watched_symbol_path(watched_symbol) %></td>
+        <td><%= link_to 'Destroy', watched_symbol, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Watched symbol', new_watched_symbol_path %>

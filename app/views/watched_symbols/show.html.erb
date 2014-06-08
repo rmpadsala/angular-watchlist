@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Symbol:</strong>
+  <%= @watched_symbol.symbol %>
+</p>
+
+<p>
+  <strong>Last price:</strong>
+  <%= @watched_symbol.last_price %>
+</p>
+
+<p>
+  <strong>Change:</strong>
+  <%= @watched_symbol.change %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @watched_symbol.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_watched_symbol_path(@watched_symbol) %> |
+<%= link_to 'Back', watched_symbols_path %>
