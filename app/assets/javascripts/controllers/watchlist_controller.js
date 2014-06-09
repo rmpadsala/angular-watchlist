@@ -27,21 +27,21 @@ watchlistApp.controller('WatchlistCtrl', ['$scope', 'SharedResource',
 
     pusherEventHandler = function(data) {
       //Q : Why do I need to say $scope.item in order to force update on view??
-      $scope.item = _.findWhere($scope.watchedItems, {
+      item = _.findWhere($scope.watchedItems, {
         user_id: data.user_id,
         symbol: data.symbol
       });
 
       console.log("Received Event " + JSON.stringify(data));
-      if ($scope.item) {
+      if (item) {
         //find scoped item and update....
-        $scope.item.last_price = data.last_price;
-        $scope.item.change = data.change;
-        $scope.item.high = data.high;
-        $scope.item.low = data.low;
-        $scope.item.open = data.open;
-        $scope.item.updated_at = data.updated_at;
-        console.log("Updated item " + JSON.stringify($scope.item));
+        item.last_price = data.last_price;
+        item.change = data.change;
+        item.high = data.high;
+        item.low = data.low;
+        item.open = data.open;
+        item.updated_at = data.updated_at;
+        console.log("Updated item " + JSON.stringify(item));
         $scope.$apply();
       }
     }
